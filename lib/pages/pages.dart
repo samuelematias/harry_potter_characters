@@ -1,1 +1,1 @@
-export 'home_page.dart';
+export 'characters_list_page.dart';

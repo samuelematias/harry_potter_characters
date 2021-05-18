@@ -21,8 +21,8 @@ class App extends StatelessWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Gamespedia',
-      home: const HomePage(),
+      title: 'Harry Potter Characters',
+      home: const CharactersListPage(),
       theme: ThemeData(
         primaryIconTheme: const IconThemeData(
           color: Colors.black,
