@@ -23,17 +23,7 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Harry Potter Characters',
       home: const CharactersListPage(),
-      theme: ThemeData(
-        primaryIconTheme: const IconThemeData(
-          color: Colors.black,
-        ),
-        accentIconTheme: const IconThemeData(
-          color: Colors.black,
-        ),
-        iconTheme: const IconThemeData(
-          color: Colors.black,
-        ),
-      ),
+      theme: ThemeData.dark(),
     );
   }
 }
