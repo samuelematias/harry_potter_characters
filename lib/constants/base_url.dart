@@ -1,1 +1,1 @@
-const baseURL = 'http://hp-api.herokuapp.com/api';
+const baseURL = 'https://hp-api.herokuapp.com/api';
