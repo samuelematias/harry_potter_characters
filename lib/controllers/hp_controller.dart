@@ -3,23 +3,27 @@ import 'package:flutter/material.dart';
 import '../models/models.dart';
 import '../repositories/hp_repository.dart';
 
-class HpController {
+class HpController extends ValueNotifier<HpState> {
   HpController([HpRepository repository])
-      : _repository = repository ?? HpRepository();
+      : _repository = repository ?? HpRepository(),
+        super(HpState.loading);
 
-  List<CharactersModel> characters = [];
+  List<HpCharactersModel> characters = [];
   final HpRepository _repository;
-  final ValueNotifier<HpState> state = ValueNotifier<HpState>(HpState.loading);
 
   Future getCharacters() async {
     try {
-      state.value = HpState.loading;
+      value = HpState.loading;
       characters = await _repository.getCharacters();
-      state.value = HpState.success;
+
+      value = HpState.success;
     } catch (e) {
-      state.value = HpState.error;
+      value = HpState.error;
     }
   }
+
+  String imageURLToHttps({String urlHttp}) =>
+      urlHttp.replaceAll('http://', 'https://');
 }
 
 enum HpState { loading, success, error }
