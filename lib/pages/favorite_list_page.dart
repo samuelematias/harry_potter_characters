@@ -8,7 +8,7 @@ class FavoriteListPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('List of favorite characters'),
+        title: const Text('List of favorite characters'),
       ),
     );
   }
