@@ -12,6 +12,12 @@ class HpCharactersModel extends Equatable {
 
   Map<String, dynamic> toJson() => _$HpCharactersModelToJson(this);
 
+  static Map<String, dynamic> toMap(HpCharactersModel character) => {
+        'name': character.name,
+        'image': character.image,
+        'house': character.house,
+      };
+
   final String name;
   final String image;
   final String house;

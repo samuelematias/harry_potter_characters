@@ -1,16 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../controllers/controllers.dart';
 import '../models/models.dart';
+import '../storage/storage.dart';
 import '../widgets/widgets.dart';
 
-class CharacterDetailPage extends StatelessWidget {
+class CharacterDetailPage extends StatefulWidget {
   const CharacterDetailPage({@required this.character, Key key})
       : super(key: key);
   final HpCharactersModel character;
 
   @override
+  _CharacterDetailPageState createState() => _CharacterDetailPageState();
+}
+
+class _CharacterDetailPageState extends State<CharacterDetailPage> {
+  CharactersStorage _charactersStorage;
+
+  @override
+  void initState() {
+    super.initState();
+    // _storage = CharactersStorage();
+    // _storage.init();
+    _charactersStorage = context.read<CharactersStorage>();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    // final FavoriteController _controller = FavoriteController();
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -20,14 +39,18 @@ class CharacterDetailPage extends StatelessWidget {
             padding: const EdgeInsets.only(right: 16),
             child: FavoriteButton(
               tooltipMessage: 'Add Character as Favorite',
-              onTap: () {},
+              // onTap: () => _controller.saveCharacter(widget.character),
+              onTap: () => _charactersStorage.saveCharacter(
+                'characters',
+                widget.character,
+              ),
             ),
-          )
+          ),
         ],
       ),
       body: SafeArea(
         child: SingleChildScrollView(
-          child: _Body(character: character),
+          child: _Body(character: widget.character),
         ),
       ),
     );
