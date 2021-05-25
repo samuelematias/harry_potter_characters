@@ -12,7 +12,17 @@ class CharacterDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 16),
+            child: InkWell(
+              onTap: () {},
+              child: const Icon(Icons.favorite),
+            ),
+          )
+        ],
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: _Body(character: character),

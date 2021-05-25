@@ -90,6 +90,7 @@ class _List extends StatelessWidget {
           ),
           title: Text(character.name),
           subtitle: Text(character.house),
+          trailing: const Icon(Icons.favorite),
           onTap: () => Navigator.push(
             context,
             MaterialPageRoute<CharacterDetailPage>(
