@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:transparent_image/transparent_image.dart';
+
 import '../controllers/controllers.dart';
 import '../models/models.dart';
+import '../widgets/widgets.dart';
+import 'characters_detail_page.dart';
 
 class CharactersListPage extends StatefulWidget {
   const CharactersListPage({Key key}) : super(key: key);
@@ -83,20 +85,19 @@ class _List extends StatelessWidget {
           leading: CircleAvatar(
             radius: 25.0,
             child: ClipOval(
-              child: FadeInImage.memoryNetwork(
-                placeholder: kTransparentImage,
-                image: imageURLHttps,
-                imageErrorBuilder: (context, error, stackTrace) {
-                  return const Icon(Icons.image_not_supported);
-                },
-                fit: BoxFit.cover,
-                width: 50,
-              ),
+              child: ImageFadeIn(imageURL: imageURLHttps),
             ),
           ),
           title: Text(character.name),
           subtitle: Text(character.house),
-          onTap: () {},
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute<CharacterDetailPage>(
+              builder: (context) => CharacterDetailPage(
+                character: character,
+              ),
+            ),
+          ),
         );
       },
     );
