@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:transparent_image/transparent_image.dart';
 import '../controllers/controllers.dart';
 import '../models/models.dart';
 
@@ -79,7 +80,20 @@ class _List extends StatelessWidget {
         final String imageURLHttps =
             controller.imageURLToHttps(urlHttp: character.image);
         return ListTile(
-          leading: Image.network(imageURLHttps),
+          leading: CircleAvatar(
+            radius: 25.0,
+            child: ClipOval(
+              child: FadeInImage.memoryNetwork(
+                placeholder: kTransparentImage,
+                image: imageURLHttps,
+                imageErrorBuilder: (context, error, stackTrace) {
+                  return const Icon(Icons.image_not_supported);
+                },
+                fit: BoxFit.cover,
+                width: 50,
+              ),
+            ),
+          ),
           title: Text(character.name),
           subtitle: Text(character.house),
           onTap: () {},
