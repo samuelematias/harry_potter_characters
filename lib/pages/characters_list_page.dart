@@ -4,6 +4,7 @@ import '../controllers/controllers.dart';
 import '../models/models.dart';
 import '../widgets/widgets.dart';
 import 'characters_detail_page.dart';
+import 'favorite_list_page.dart';
 
 class CharactersListPage extends StatefulWidget {
   const CharactersListPage({Key key}) : super(key: key);
@@ -24,10 +25,31 @@ class _CharactersListPageState extends State<CharactersListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text('Harry Potter Character Catalog'),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 32),
+            child: FavoriteButton(
+              tooltipMessage: 'List of favorite characters',
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute<FavoriteListPage>(
+                  builder: (context) => const FavoriteListPage(),
+                ),
+              ),
+            ),
+          )
+        ],
+      ),
       body: SafeArea(
-        child: AnimatedBuilder(
-          animation: _controller,
-          builder: (_, __) => _Body(controller: _controller),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: AnimatedBuilder(
+            animation: _controller,
+            builder: (_, __) => _Body(controller: _controller),
+          ),
         ),
       ),
     );
@@ -90,7 +112,9 @@ class _List extends StatelessWidget {
           ),
           title: Text(character.name),
           subtitle: Text(character.house),
-          trailing: const Icon(Icons.favorite),
+          trailing: const FavoriteButton(
+            tooltipMessage: 'Favorite Character',
+          ),
           onTap: () => Navigator.push(
             context,
             MaterialPageRoute<CharacterDetailPage>(

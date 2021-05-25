@@ -13,12 +13,14 @@ class CharacterDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
+        title: const Text('Character detail'),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 16),
-            child: InkWell(
+            child: FavoriteButton(
+              tooltipMessage: 'Add Character as Favorite',
               onTap: () {},
-              child: const Icon(Icons.favorite),
             ),
           )
         ],
