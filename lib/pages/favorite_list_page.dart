@@ -85,8 +85,9 @@ class _List extends StatelessWidget {
     return StreamBuilder<CharactersStorage>(
         stream: charactersStorage.stream,
         builder: (context, snapshot) {
-          final List<HpCharactersModel> cx = charactersStorage.readCharacters;
-          if (cx.isEmpty) {
+          final List<HpCharactersModel> cx =
+              charactersStorage?.readCharacters ?? [];
+          if (cx.isEmpty || cx == null) {
             return const Center(child: Text('No favorite characters yet'));
           }
           return ListView.builder(

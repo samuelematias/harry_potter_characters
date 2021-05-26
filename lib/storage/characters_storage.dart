@@ -23,13 +23,22 @@ class CharactersStorage {
     return isReady;
   }
 
-  List<HpCharactersModel> get readCharacters =>
-      (json.decode(_prefs.getString('characters')) as List<dynamic>)
-          .cast<Map<String, Object>>()
-          .map<HpCharactersModel>(
-              (character) => HpCharactersModel.fromJson(character))
-          .toList() ??
-      [];
+  List<HpCharactersModel> get readCharacters {
+    if (_prefs.getString('characters') == null) {
+      return [];
+    }
+    final List<dynamic> list =
+        json.decode(_prefs.getString('characters')) as List<dynamic>;
+    if (list.isEmpty || list == null) {
+      return [];
+    }
+    return list
+            .cast<Map<String, Object>>()
+            .map<HpCharactersModel>(
+                (character) => HpCharactersModel.fromJson(character))
+            .toList() ??
+        [];
+  }
 
   Future saveCharacter(
     String key,
@@ -69,7 +78,19 @@ class CharactersStorage {
     if (!isReady) {
       await init();
     }
-    _prefs.remove(key);
-    _controller.add(this);
+    if (_prefs.getString('characters') != null) {
+      final List<dynamic> list =
+          json.decode(_prefs.getString('characters')) as List<dynamic>;
+
+      list
+          .cast<Map<String, Object>>()
+          .removeWhere((char) => char.containsValue(character.name));
+
+      _prefs.setString(
+        key,
+        json.encode(list),
+      );
+      _controller.add(this);
+    }
   }
 }
