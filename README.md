@@ -1,16 +1,46 @@
-# harry_potter_characters
+<!-- header section -->
+<p align="center">
+  <img alt="gamespedia" height="250" src="https://i.imgur.com/POVxyGE.jpg" />
+  <br/>
+  <span><b>Harry Potter Character Catalog 🧙🏾‍♂️</b></span><br/>
+</p>
+<!-- header section END -->
 
-A new Flutter project.
+<br/>
 
-## Getting Started
+<!-- show case/gif section -->
+<p align="center">
+<a href="https://imgur.com/HbEvSss"><img src="https://i.imgur.com/HbEvSss.gif" title="source: imgur.com" /></a>
+</p>
+<!-- show case/gif section END -->
 
-This project is a starting point for a Flutter application.
+<br/>
 
-A few resources to get you started if this is your first Flutter project:
+<!-- about app and course section -->
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## About this App 🗣
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This App shows the main characters of the harry potter story.
+
+## Tech Stack 👩🏾‍💻
+
+- [Dart](https://dart.dev/)
+- [Flutter](https://flutter.dev/)
+
+## Plugins 📟
+
+- [transparent_image](https://pub.dev/packages/transparent_image)
+- [dio](https://pub.dev/packages/dio)
+- [equatable](https://pub.dev/packages/equatable)
+- [provider](https://pub.dev/packages/provider)
+- [shared_preferences](https://pub.dev/packages/shared_preferences)
+- [build_runner](https://pub.dev/packages/build_runner)
+- [json_annotation](https://pub.dev/packages/json_annotation)
+- [json_serializable](https://pub.dev/packages/json_serializable)
+
+
+## Tools 🛠
+
+- [hover](https://github.com/go-flutter-desktop/hover)
+
+<!-- about app and course section END -->
