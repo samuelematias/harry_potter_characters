@@ -21,15 +21,11 @@ class _CharacterDetailPageState extends State<CharacterDetailPage> {
   @override
   void initState() {
     super.initState();
-    // _storage = CharactersStorage();
-    // _storage.init();
     _charactersStorage = context.read<CharactersStorage>();
   }
 
   @override
   Widget build(BuildContext context) {
-    // final FavoriteController _controller = FavoriteController();
-
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
