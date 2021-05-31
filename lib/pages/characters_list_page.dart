@@ -112,9 +112,6 @@ class _List extends StatelessWidget {
           ),
           title: Text(character.name),
           subtitle: Text(character.house),
-          trailing: const FavoriteButton(
-            tooltipMessage: 'Favorite Character',
-          ),
           onTap: () => Navigator.push(
             context,
             MaterialPageRoute<CharacterDetailPage>(

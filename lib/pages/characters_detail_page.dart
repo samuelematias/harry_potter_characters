@@ -39,7 +39,6 @@ class _CharacterDetailPageState extends State<CharacterDetailPage> {
             padding: const EdgeInsets.only(right: 16),
             child: FavoriteButton(
               tooltipMessage: 'Add Character as Favorite',
-              // onTap: () => _controller.saveCharacter(widget.character),
               onTap: () => _charactersStorage.saveCharacter(
                 'characters',
                 widget.character,
@@ -77,20 +76,12 @@ class _Body extends StatelessWidget {
             children: [
               ImageFadeIn(imageURL: imageURLHttps, width: 200),
               const SizedBox(width: 16),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    character.name,
-                    style: const TextStyle(fontSize: 30),
-                  ),
-                  const SizedBox(height: 16),
-                  Text(
-                    character.house,
-                    style: const TextStyle(fontSize: 20),
-                  ),
-                ],
-              )
+              Flexible(
+                child: Text(
+                  character.name,
+                  style: const TextStyle(fontSize: 30),
+                ),
+              ),
             ],
           ),
         ],
