@@ -83,38 +83,39 @@ class _List extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<CharactersStorage>(
-        stream: charactersStorage.stream,
-        builder: (context, snapshot) {
-          final List<HpCharactersModel> cx =
-              charactersStorage?.readCharacters ?? [];
-          if (cx.isEmpty || cx == null) {
-            return const Center(child: Text('No favorite characters yet'));
-          }
-          return ListView.builder(
-            itemCount: cx.length,
-            itemBuilder: (BuildContext context, int index) {
-              final HpCharactersModel character = cx[index];
-              final String imageURLHttps =
-                  controller.imageURLToHttps(urlHttp: character.image);
-              return ListTile(
-                leading: CircleAvatar(
-                  radius: 25.0,
-                  child: ClipOval(
-                    child: ImageFadeIn(imageURL: imageURLHttps),
-                  ),
+      stream: charactersStorage.stream,
+      builder: (context, snapshot) {
+        final List<HpCharactersModel> cx =
+            charactersStorage?.readCharacters ?? [];
+        if (cx.isEmpty || cx == null) {
+          return const Center(child: Text('No favorite characters yet'));
+        }
+        return ListView.builder(
+          itemCount: cx.length,
+          itemBuilder: (BuildContext context, int index) {
+            final HpCharactersModel character = cx[index];
+            final String imageURLHttps =
+                controller.imageURLToHttps(urlHttp: character.image);
+            return ListTile(
+              leading: CircleAvatar(
+                radius: 25.0,
+                child: ClipOval(
+                  child: ImageFadeIn(imageURL: imageURLHttps),
                 ),
-                title: Text(character.name),
-                subtitle: Text(character.house),
-                trailing: const FavoriteButton(
-                  tooltipMessage: 'Unfavorite Character',
-                ),
-                onTap: () => charactersStorage.removeCharacter(
-                  'characters',
-                  character,
-                ),
-              );
-            },
-          );
-        });
+              ),
+              title: Text(character.name),
+              subtitle: Text(character.house),
+              trailing: const FavoriteButton(
+                tooltipMessage: 'Unfavorite Character',
+              ),
+              onTap: () => charactersStorage.removeCharacter(
+                'characters',
+                character,
+              ),
+            );
+          },
+        );
+      },
+    );
   }
 }
